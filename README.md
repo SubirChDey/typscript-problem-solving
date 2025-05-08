@@ -138,8 +138,8 @@ function getProperty<T, K extends keyof T>(obj: T, key: K): T[K] {
 
 const person = { name: "Subir", age: 70 };
 
-const name = getProperty(person, "name");
-const age = getProperty(person, "age");
+const name = getProperty(person, "name"); // Output: "Subir"
+const age = getProperty(person, "age");   // Output: 70
 ```
 
 This ensures that you can only access properties that exist on the object, making your code safer and more predictable.
