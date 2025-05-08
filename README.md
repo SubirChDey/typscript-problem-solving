@@ -99,3 +99,59 @@ type User = {
 
 So, these are the key differences between **Type** and **Interface** in TypeScript.
 Choose the one that best fits your use case!
+
+
+<!-- --------------------- -->
+# Mastering `keyof` in TypeScript: A Simple Guide with Examples
+
+## What is `keyof`?
+
+`keyof` is a utility keyword in TypeScript that creates a **union type** of an object's property names. Simply put, it returns the property names of an object as a type.
+
+---
+
+## Example
+
+```ts
+// Define a type for a person object
+type Person = {
+  name: string;
+  age: number;
+};
+
+// Create a union type of the property names using keyof
+type PersonKeys = keyof Person; // "name" | "age"
+```
+
+In this example, `PersonKeys` becomes a union of the keys in `Person`, meaning it can be either `'name'` or `'age'`.
+
+---
+
+## Practical Example
+
+You can use `keyof` in generic functions to ensure type safety:
+
+```ts
+function getProperty<T, K extends keyof T>(obj: T, key: K): T[K] {
+  return obj[key];
+}
+
+const person = { name: "Subir", age: 70 };
+
+const name = getProperty(person, "name");
+const age = getProperty(person, "age");
+```
+
+This ensures that you can only access properties that exist on the object, making your code safer and more predictable.
+
+---
+
+## Summary
+
+* `keyof` is used to create a union of property names from a given type.
+* It's commonly used in generic functions to enforce type safety.
+* Makes your code cleaner, safer, and more maintainable.
+
+---
+
+### Happy coding with TypeScript! 🚀
